@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "301838118060",
+    "project_id": "evaluacion3apmobiles",
+    "storage_bucket": "evaluacion3apmobiles.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:301838118060:android:4a1360ded1fb1640d84309",
+        "android_client_info": {
+          "package_name": "com.example.evaluacon3apmobiles"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "301838118060-eg8qeldqgf65f2rmgfuuv0i7lkj9cbq1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.evaluacon3apmobiles",
+            "certificate_hash": "18182bbefea7d24674089d0bfb8c9722f366cef9"
+          }
+        },
+        {
+          "client_id": "301838118060-1abdrg45rf0vl6o301s1fjjtj7empgal.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAz6EkeBmP63hONRTfJI0YFe9jqRimmY68"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "301838118060-1abdrg45rf0vl6o301s1fjjtj7empgal.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
