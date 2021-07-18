@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
     private TextInputEditText user, contrasena, correo;
-    private Button btnSesion, btnRecuperar, btnCambio;
+    private Button btnSesion, btnRecuperar, btnRegistro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         contrasena = findViewById(R.id.tiextPassword);
         btnSesion = findViewById(R.id.btnAcceso);
         btnRecuperar = findViewById(R.id.btnRecuperar);
-        btnCambio = findViewById(R.id.btnCambiar);
+        btnRegistro = findViewById(R.id.btnRegistrar);
         correo = findViewById(R.id.tiextCorreo);
         crearArchivoShared();
         leerArchivoShared();

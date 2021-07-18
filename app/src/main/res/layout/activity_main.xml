@@ -95,12 +95,12 @@
             android:text="@string/btnAcceso" />
 
         <Button
-            android:id="@+id/btnCambiar"
+            android:id="@+id/btnRegistrar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="#49974C"
-            android:text="@string/btnCambiar" />
+            android:text="@string/btnRegistrar" />
 
         <Button
             android:id="@+id/btnRecuperar"
