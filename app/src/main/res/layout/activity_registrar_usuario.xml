@@ -18,8 +18,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="582dp"
+        android:id="@+id/linearLayout2"
+        android:layout_width="397dp"
+        android:layout_height="471dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
@@ -40,36 +41,69 @@
             android:id="@+id/etNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:ems="10"
             android:hint="@string/etNombre"
-            android:layout_marginTop="15dp"
             android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/etNameUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:ems="10"
             android:hint="@string/etNameUser"
-            android:layout_marginTop="15dp"
             android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:ems="10"
             android:hint="@string/etEmail"
-            android:layout_marginTop="15dp"
             android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:ems="10"
             android:hint="@string/etPassword"
-            android:layout_marginTop="15dp"
             android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/tiPregunta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/tiPregunta"
+            android:textSize="24sp" />
+
+        <Spinner
+            android:id="@+id/spnPreguntas"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_marginTop="15dp" />
+
+        <AutoCompleteTextView
+            android:id="@+id/actRespuesta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:hint="@string/actRespuesta" />
+
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnRegistrarUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/btnRegistrarUsuario"
+        app:backgroundTint="#0AE313"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

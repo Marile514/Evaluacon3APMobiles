@@ -14,4 +14,7 @@
     <string name="etNameUser">Apodo del usuario</string>
     <string name="etEmail">Correo electrónico</string>
     <string name="etPassword">Contraseña</string>
+    <string name="tiPregunta">Pregunta de seguridad.</string>
+    <string name="actRespuesta">Respuesta de seguridad.</string>
+    <string name="btnRegistrarUsuario">Registrar usuario</string>
 </resources>
