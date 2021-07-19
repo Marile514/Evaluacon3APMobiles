@@ -16,8 +16,7 @@ public class adminSQLiteUsers extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE USUARIO(idUsuario integer primary key, nombre text, nombreUsuario text, correo text," +
-                "password text, securityQuestion text, securityAnswer text)");
+        db.execSQL(Utilidades.CREAR_TABLA_USUARIO);
         Log.d("TAG_","Base de datos creado");
     }
 

@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 valEmail(correo);
                 valPassword(contrasena);
                 if(valNameUser(user) && valPassword(contrasena)){
-                    Toast.makeText(MainActivity.this, "Usuario " + user.getText().toString() +" registrado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Usuario " + user.getText().toString() +" acceso a sesión", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(MainActivity.this, "Usuario no registrado", Toast.LENGTH_SHORT).show();
                 }
