@@ -139,16 +139,20 @@ public class RegistrarUsuario extends AppCompatActivity {
            AdminSQLiteUsers connInsert = new AdminSQLiteUsers(this, "dbUsuarios", null, 1);
            SQLiteDatabase db = connInsert.getWritableDatabase();
 
-           ContentValues values = new ContentValues();
-           values.put(Utilidades.NOMBRE, edNombre.getText().toString());
-           values.put(Utilidades.USENAME, edApodoUser.getText().toString());
-           values.put(Utilidades.CORREO, edCorreo.getText().toString());
-           values.put(Utilidades.PASSWORD, edPassword.getText().toString());
-           values.put(Utilidades.PREGUNTA, spinPreguntas);
-           values.put(Utilidades.RESPUESTA, edAnswer.getText().toString());
+           //Recuperar datos en String.
+           String nombres = edNombre.getText().toString();
+           String username = edApodoUser.getText().toString();
+           String correo = edCorreo.getText().toString();
+           String password = edPassword.getText().toString();
+           String pregunta = spinPreguntas;
+           String respuesta = edAnswer.getText().toString();
+           //Arreglo de String para pasar como parametro a la consulta sql.
+           String[] datos = {null, nombres, username, correo, password, pregunta, respuesta};
+           db.execSQL("INSERT INTO usuario (id_Usuario,nombre_apellido,username,correo,password,pregunta,respuesta)" +
+                   "VALUES (?,?,?,?,?,?,?)", datos);
            db.close();
-
            Log.d("TAG_", "Se logró insertar los datos");
+           finish();
        }catch (Exception ex){
            Log.d("TAG_", "Error " +ex.toString());
        }

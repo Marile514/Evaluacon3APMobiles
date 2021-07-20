@@ -21,6 +21,19 @@ public class Usuario implements Serializable {
         this.securityAnswer = securityAnswer;
     }
 
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "idUsuario=" + idUsuario +
+                ", nombre='" + nombre + '\'' +
+                ", nombreUsuario='" + nombreUsuario + '\'' +
+                ", correo='" + correo + '\'' +
+                ", password='" + password + '\'' +
+                ", securityQuestion='" + securityQuestion + '\'' +
+                ", securityAnswer='" + securityAnswer + '\'' +
+                '}';
+    }
+
     public Integer getIdUsuario() {
         return idUsuario;
     }

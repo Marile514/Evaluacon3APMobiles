@@ -29,7 +29,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         inits();
+        baseDatos1();
         events();
+    }
+
+    @Override
+    protected  void onResume() {
+        super.onResume();
+        //Cargar tu ArrayList de Usuarios.
+        getUsuarios();
     }
 
     private void inits(){
@@ -41,6 +49,45 @@ public class MainActivity extends AppCompatActivity {
         crearArchivoShared();
         leerArchivoShared();
         baseDatos();
+    }
+
+    //Metodo para capturar y leer la base de datos del Usuario.
+    private void getUsuarios() {
+        listaUsuarios.clear();
+        try{
+            AdminSQLiteUsers conn = new AdminSQLiteUsers(this, "dbUsuarios", null, 1);
+            SQLiteDatabase db = conn.getReadableDatabase();
+            Usuario usuario = null;
+            Cursor c = db.rawQuery("SELECT * FROM usuario", null);
+
+            while (c.moveToNext()){
+                usuario = new Usuario();
+                usuario.setIdUsuario(c.getInt(0));
+                usuario.setNombre(c.getString(1));
+                usuario.setNombreUsuario(c.getString(2));
+                usuario.setCorreo(c.getString(3));
+                usuario.setPassword(c.getString(4));
+                usuario.setSecurityQuestion(c.getString(5));
+                usuario.setSecurityAnswer(c.getString(6));
+                listaUsuarios.add(usuario);
+            }
+            db.close();
+            Log.d("TAG_", "getUusuarios: " + listaUsuarios);
+        }catch (Exception ex){
+            Log.d("TAG_", "getUsuarios: ERROR" + ex.toString());
+        }
+    }
+
+    private void baseDatos1(){
+        try{
+            AdminSQLiteUsers conn = new AdminSQLiteUsers(this, "dbUsuarios", null, 1);
+            SQLiteDatabase db = conn.getWritableDatabase();
+            db.close();
+            Log.d("TAG_", "Instanciada Base de datos: ");
+        }catch (Exception ex){
+            Log.d("TAG_", "ERROR." +ex.toString());
+        }
+
     }
 
     public boolean valNameUser(TextInputEditText user){
@@ -92,10 +139,28 @@ public class MainActivity extends AppCompatActivity {
         btnSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Objeto usuario -> a la activity del usuario.
+                Usuario usuario = null;
+
+                ArrayList<Usuario> listaUsuarios2 = listaUsuarios;
+
                 valNameUser(user);
                 valPassword(contrasena);
                 if(valNameUser(user) && valPassword(contrasena)){
-                    Toast.makeText(MainActivity.this, "Usuario " + user.getText().toString() +" acceso a sesión", Toast.LENGTH_SHORT).show();
+                    if(listaUsuarios2.isEmpty()){
+                        Toast.makeText(MainActivity.this, "No existen usuarios", Toast.LENGTH_SHORT).show();
+                    }else{
+                        for (Usuario u : listaUsuarios2){
+                            if(u.getNombreUsuario().equals(user.getText().toString()) && u.getPassword().equals(contrasena.getText().toString())){
+                                usuario = u;
+                                Intent i = new Intent(MainActivity.this, UsuarioActivity.class);
+                                i.putExtra("usuario", usuario);
+                                startActivity(i);
+                            }else{
+                                Toast.makeText(MainActivity.this, "username o password incorrectos.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
                 }else{
                     Toast.makeText(MainActivity.this, "Usuario no registrado", Toast.LENGTH_SHORT).show();
                 }
@@ -110,6 +175,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     //Metodo que te retorne una lista de usuarios.
     private void baseDatos() {
         try{
@@ -130,6 +196,7 @@ public class MainActivity extends AppCompatActivity {
                 usuario.setSecurityAnswer(c.getString(6));
                 listaUsuarios.add(usuario);
             }
+
         }catch (Exception ex){
             Log.d("TAG_", "databaseUsers: " + ex.toString());
         }

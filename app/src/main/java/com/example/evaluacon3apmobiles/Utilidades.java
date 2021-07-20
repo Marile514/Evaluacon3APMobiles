@@ -1,16 +1,11 @@
 package com.example.evaluacon3apmobiles;
 
 public class Utilidades {
-    //Constantes campos de la tabla usuario.
-    public static final String USUARIO = "usuario";
-    public static final String ID_USUARIO = "id_usuario";
-    public static final String NOMBRE = "nombre_apellido";
-    public static final String USENAME = "username";
-    public static final String CORREO = "correo";
-    public static final String PASSWORD = "password";
-    public static final String PREGUNTA = "pregunta";
-    public static final String RESPUESTA = "respuesta";
-
+    //Creación de las tablas.
     public static final String users_table = "CREATE TABLE usuario (id_Usuario INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "nombre_apellido TEXT, username TEXT, correo TEXT, password TEXT, pregunta TEXT, respuesta TEXT)";
+
+    public static final String events_table = "CREATE TABLE evento (titulo TEXT, importancia TEXT, observacion TEXT, " +
+            "lugar TEXT, fecha_evento DATE, tiempo_aviso TIME, id_usuario INTEGER NOT NULL," +
+            "CONSTRAINT FK_USUARIOS FOREIGN KEY (id_usuario) REFERENCES usuario (id_Usuario)";
 }
