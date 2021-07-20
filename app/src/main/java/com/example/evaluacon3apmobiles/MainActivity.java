@@ -3,20 +3,26 @@ package com.example.evaluacon3apmobiles;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
-    private TextInputEditText user, contrasena, correo;
+    private TextInputEditText user, contrasena;
     private Button btnSesion, btnRecuperar, btnRegistro;
+    private ArrayList<Usuario> listaUsuarios = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
         btnSesion = findViewById(R.id.btnAcceso);
         btnRecuperar = findViewById(R.id.btnRecuperar);
         btnRegistro = findViewById(R.id.btnRegistrar);
-        correo = findViewById(R.id.tiextCorreo);
         crearArchivoShared();
         leerArchivoShared();
+        baseDatos();
     }
 
     public boolean valNameUser(TextInputEditText user){
@@ -44,28 +50,6 @@ public class MainActivity extends AppCompatActivity {
             user.setError("No ingresó el nombre del usuario");
             return false;
         }
-    }
-
-    private boolean valEmail(TextInputEditText correo){
-        if(!correo.getText().toString().isEmpty()){
-            String strCorreo = correo.getText().toString();
-            //Usar el método validarCorreo2(strCorreo) para la expresión regular.
-            if(validarCorreo(strCorreo)){
-                return true;
-            } else {
-                correo.setError("No es un Correo!");
-                return false;
-            }
-        } else {
-            correo.setError("Correo vacío");
-            return false;
-        }
-    }
-
-    public boolean validarCorreo(String email){
-        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
-        Matcher matcher = pattern.matcher(email);
-        return matcher.find();
     }
 
     public boolean valPassword(TextInputEditText contrasena){
@@ -83,12 +67,10 @@ public class MainActivity extends AppCompatActivity {
         String email = sdps.getString("Correo electrónico", "");
         String pass = sdps.getString("Contraseña", "");
         user.setText(usuario);
-        correo.setText(email);
         contrasena.setText(pass);
 
         SharedPreferences.Editor editarLogin = sdps.edit();
         editarLogin.putString("Nombre del usuario", user.getText().toString());
-        editarLogin.putString("Correo electrónico", correo.getText().toString());
         editarLogin.putString("Contraseña", contrasena.getText().toString());
         editarLogin.putBoolean("Recordar sesion", true);
         editarLogin.commit();
@@ -100,10 +82,8 @@ public class MainActivity extends AppCompatActivity {
 
         if(restoredText != null){
             String nombreUsuario = sdps.getString("Nombre del usuario", "");
-            String correoUsuario = sdps.getString("Correo electrónico", "");
             String password = sdps.getString("Contraseña", "");
             user.setText(nombreUsuario);
-            correo.setText(correoUsuario);
             contrasena.setText(password);
         }
     }
@@ -113,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 valNameUser(user);
-                valEmail(correo);
                 valPassword(contrasena);
                 if(valNameUser(user) && valPassword(contrasena)){
                     Toast.makeText(MainActivity.this, "Usuario " + user.getText().toString() +" acceso a sesión", Toast.LENGTH_SHORT).show();
@@ -122,5 +101,37 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        btnRegistro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, RegistrarUsuario.class);
+                startActivity(i);
+            }
+        });
+    }
+    //Metodo que te retorne una lista de usuarios.
+    private void baseDatos() {
+        try{
+            AdminSQLiteUsers conn = new AdminSQLiteUsers(this, "dbUsuarios", null, 1);
+            SQLiteDatabase db = conn.getReadableDatabase();
+            Usuario usuario = null;
+            String sql = "SELECT * FROM usuario";
+            Cursor c = db.rawQuery(sql, null);
+
+            while(c.moveToNext()){
+                usuario = new Usuario();
+                usuario.setIdUsuario(c.getInt(0));
+                usuario.setNombre(c.getString(1));
+                usuario.setNombreUsuario(c.getString(2));
+                usuario.setCorreo(c.getString(3));
+                usuario.setPassword(c.getString(4));
+                usuario.setSecurityQuestion(c.getString(5));
+                usuario.setSecurityAnswer(c.getString(6));
+                listaUsuarios.add(usuario);
+            }
+        }catch (Exception ex){
+            Log.d("TAG_", "databaseUsers: " + ex.toString());
+        }
     }
 }

@@ -6,6 +6,10 @@ public class Usuario implements Serializable {
     private Integer idUsuario;
     private String nombre, nombreUsuario, correo, password, securityQuestion, securityAnswer;
 
+    public Usuario(){
+
+    }
+
     public Usuario(Integer idUsuario, String nombre, String nombreUsuario, String correo,
                    String password, String securityQuestion, String securityAnswer) {
         this.idUsuario = idUsuario;

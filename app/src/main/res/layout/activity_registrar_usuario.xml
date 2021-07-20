@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".registrarUsuario">
+    tools:context=".RegistrarUsuario">
 
     <TextView
         android:id="@+id/tvTituloRegister"
@@ -28,14 +28,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTituloRegister">
-
-        <EditText
-            android:id="@+id/etIdUser"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/etIdUser"
-            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/etNombre"
@@ -87,12 +79,14 @@
             android:layout_height="38dp"
             android:layout_marginTop="15dp" />
 
-        <AutoCompleteTextView
-            android:id="@+id/actRespuesta"
+        <EditText
+            android:id="@+id/etRespuestas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:hint="@string/actRespuesta" />
+            android:ems="10"
+            android:hint="@string/etRespuestas"
+            android:inputType="textPersonName" />
 
     </LinearLayout>
 

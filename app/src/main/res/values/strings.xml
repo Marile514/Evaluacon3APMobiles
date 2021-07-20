@@ -9,12 +9,11 @@
     <string name="tvTitulo">Cambiar la contraseña del usuario.</string>
     <string name="btnRegistrar">Registrar usuario</string>
     <string name="tvTituloRegister">Registrando usuario.</string>
-    <string name="etIdUser">ID del usuario</string>
     <string name="etNombre">Nombre</string>
     <string name="etNameUser">Apodo del usuario</string>
     <string name="etEmail">Correo electrónico</string>
     <string name="etPassword">Contraseña</string>
     <string name="tiPregunta">Pregunta de seguridad.</string>
-    <string name="actRespuesta">Respuesta de seguridad.</string>
+    <string name="etRespuestas">Respuesta de seguridad</string>
     <string name="btnRegistrarUsuario">Registrar usuario</string>
 </resources>
