@@ -16,4 +16,11 @@
     <string name="tiPregunta">Pregunta de seguridad.</string>
     <string name="etRespuestas">Respuesta de seguridad</string>
     <string name="btnRegistrarUsuario">Registrar usuario</string>
+    <string name="tiedTitulo">Titulo</string>
+    <string name="tiedImportancia">Importancia</string>
+    <string name="tiedObservacion">Observacion</string>
+    <string name="tiedLugar">Lugar del evento</string>
+    <string name="tiedFecha">Fecha del evento</string>
+    <string name="tiedTiempo">Tiempo de aviso</string>
+    <string name="btnCapturaEvento">Evento registrar</string>
 </resources>

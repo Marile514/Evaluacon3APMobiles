@@ -20,7 +20,6 @@ import java.util.regex.Pattern;
 public class RegistrarUsuario extends AppCompatActivity {
     private EditText edNombre, edApodoUser, edCorreo, edPassword, edAnswer;
     private Spinner spnQuestions;
-    private AutoCompleteTextView actAnswers;
     private Button btnUsuario;
     private ArrayAdapter adapterSpin;
     private String[] secureQuestion = new String[4];

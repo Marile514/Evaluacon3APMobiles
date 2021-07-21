@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 listaUsuarios.add(usuario);
             }
             db.close();
-            Log.d("TAG_", "getUusuarios: " + listaUsuarios);
+            Log.d("TAG_", "getUsuarios: " + listaUsuarios);
         }catch (Exception ex){
             Log.d("TAG_", "getUsuarios: ERROR" + ex.toString());
         }
@@ -156,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
                                 Intent i = new Intent(MainActivity.this, UsuarioActivity.class);
                                 i.putExtra("usuario", usuario);
                                 startActivity(i);
+                                Toast.makeText(MainActivity.this, "username y paswword correctos.", Toast.LENGTH_SHORT).show();
                             }else{
                                 Toast.makeText(MainActivity.this, "username o password incorrectos.", Toast.LENGTH_SHORT).show();
                             }
