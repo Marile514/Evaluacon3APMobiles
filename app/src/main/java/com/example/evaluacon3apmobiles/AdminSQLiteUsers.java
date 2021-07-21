@@ -17,7 +17,7 @@ public class AdminSQLiteUsers extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(Utilidades.users_table);
-        //db.execSQL(Utilidades.events_table);
+        db.execSQL(Utilidades.events_table);
         Log.d("TAG_","Base de datos creado");
     }
 

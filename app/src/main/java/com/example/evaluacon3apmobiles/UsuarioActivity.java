@@ -147,7 +147,10 @@ public class UsuarioActivity extends AppCompatActivity {
         btnCambiar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //Transferir activity con bundle.
+                Intent i = new Intent(UsuarioActivity.this, CambiarPassword.class);
+                i.putExtra("usuario", usuario);
+                startActivity(i);
             }
         });
         btnDelete.setOnClickListener(new View.OnClickListener() {
@@ -160,10 +163,7 @@ public class UsuarioActivity extends AppCompatActivity {
         eventoRegist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Eventos eventos = (Eventos) parent.getItemAtPosition(position);
-                Intent i = new Intent(UsuarioActivity.this, RegistrarEventos.class);
-                i.putExtra("eventos", eventos);
-                startActivity(i);
+
             }
         });
     }
